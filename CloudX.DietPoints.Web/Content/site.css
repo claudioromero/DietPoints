@@ -1,0 +1,91 @@
+﻿form { margin: 0; }
+
+.hidable-options-container a.option {
+    cursor: pointer;
+    display: none;
+    float: right;
+    text-decoration: underline;
+}
+
+.hidable-options-container:hover a.option { display: inline; }
+
+#configure-expected-dietPoints-per-day {
+    color: #ffffff;
+    margin-right: -18px;
+}
+.alert-info a.option {
+    margin-right: -18px;
+}
+
+.alert-info a {
+    color: #ffffff;
+    cursor:pointer;
+}
+
+#dietPoints-entries table tr .options {
+    cursor: pointer;
+    margin-bottom: 0;
+    text-align: right;
+}
+
+.confirmation > .modal-dialog { width: 30% !important; }
+
+input#expected-daily-dietPoints {
+    display: inline;
+    margin: 0 10 0 10;
+    width: 70px;
+}
+
+.expected-daily-dietPoints-configuration > .modal-dialog { width: 40%; }
+
+.modal-dialog { width: 55%; }
+
+.expected-daily-dietPoints-configuration .modal-body,
+.confirmation .modal-body { text-align: center; }
+
+.clear { clear: both }
+
+#entry-form .date-picker,
+.filter-when .date-picker {
+    float: left;
+    margin-right: 22px;
+}
+
+.filter-when .time-picker {
+    float: left;
+    margin-right: 22px;
+}
+
+.date-picker .btn-default {
+    background-color: #fff;
+    border-color: #fff;
+    color: #b4bcc2;
+}
+
+.date-picker .btn-default:hover {
+    background-color: #dce4ec;
+    border-color: #dce4ec;
+    color: #fff;
+}
+
+.date-picker .btn-default.btn-info {
+    background-color: #3498db;
+    border-color: #3498db;
+    color: #fff;
+}
+
+.date-picker .btn-default.btn-info .text-info { color: #fff; }
+
+.date-picker .btn-default.active {
+    -webkit-box-shadow: none;
+    border-color: #3498db;
+    box-shadow: none;
+}
+
+.time-picker td { padding-right: 5px; }
+
+.time-picker input, .time-picker button { width: 55px !important; }
+
+.validation-summary-valid{
+    display:none;
+}

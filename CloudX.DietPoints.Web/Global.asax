@@ -1,0 +1,1 @@
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="CloudX.DietPoints.Web.MvcApplication" Language="C#" %>

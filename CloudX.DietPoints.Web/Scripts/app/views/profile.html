@@ -1,0 +1,48 @@
+﻿<h2>Profile</h2>
+<div class="col-lg-6">
+    <form role="form" name="profileForm" novalidate angular-validator angular-validator-submit="save()">
+        <fieldset>
+            <legend>Change Password</legend>
+            <div ng-hide="errors.length == 0" class="alert alert-danger">
+                <strong>There were errors:</strong>
+                <ul ng-repeat="error in errors">
+                    <li>{{error}}</li>
+                </ul>
+            </div>
+            <div ng-show="success" class="alert alert-success">
+                <strong>Fantastic!</strong> You successfully changed your password.
+            </div>
+            <div ng-hide="success">
+                <div class="form-group">
+                    <input type="password"
+                           name="password"
+                           class="form-control"
+                           ng-model="user.oldPassword"
+                           required
+                           placeholder="Old Password"/>
+                </div>
+                <div class="form-group">
+                    <input type="password"
+                           name="password"
+                           class="form-control"
+                           ng-model="user.newPassword"
+                           required
+                           placeholder="New Password"
+                           validate-on="dirty"/>
+                </div>
+                <div class="form-group">
+                    <input type="password"
+                           name="confirmPassword"
+                           class="form-control"
+                           ng-model="user.confirmPassword"
+                           required
+                           placeholder="Confirm Password"
+                           validate-on="dirty"/>
+                </div>
+                <div class="clear">
+                    <button type="submit" class="btn btn-primary" ng-click="save()">Save changes</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

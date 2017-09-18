@@ -1,0 +1,26 @@
+﻿<div class="modal-header">
+    <a href="" class="close" data-ng-click="close()">&times;</a>
+    <h4 class="modal-title">
+        Filter Entries
+    </h4>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <button type="button" class="btn {{filter.filterDate && 'btn-success'||'' }}" ng-model="filter.filterDate" uib-btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false">Filter by Date</button>
+        <div uib-collapse="!filter.filterDate">
+            <uib-datepicker ng-model="filter.dateFrom" show-weeks="true" class="date-picker"></uib-datepicker>
+            <uib-datepicker ng-model="filter.dateTo" min-date="filter.dateFrom" class="date-picker"></uib-datepicker>
+        </div>
+    </div>
+    <div class="form-group clear">
+        <button type="button" class="btn {{filter.filterTime && 'btn-success'||'' }}" ng-model="filter.filterTime" uib-btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false">Filter by Time</button>
+        <div uib-collapse="!filter.filterTime">
+            <uib-timepicker ng-model="filter.timeFrom" show-meridian="true" class="time-picker"></uib-timepicker>
+            <uib-timepicker ng-model="filter.timeTo" min="filter.timeFrom" show-meridian="true" class="time-picker"></uib-timepicker>
+        </div>
+    </div>
+</div>
+<div class="modal-footer clear">
+    <button type="button" class="btn btn-default" data-ng-click="close()">Close</button>
+    <button type="submit" data-ng-click="doFilter()" class="btn btn-primary">Filter</button>
+</div>

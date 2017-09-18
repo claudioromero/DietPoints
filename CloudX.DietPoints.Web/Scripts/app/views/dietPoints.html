@@ -1,0 +1,62 @@
+﻿<div id="dietPoints-entries" class="col-lg-7">
+    <div class="alert alert-dismissible alert-info" ng-show="totalRecordsCount == 0">
+        <h5 class="hidable-options-container">No entries found!<a class="option clear-filter" ng-click="clearFilterAndSearch()">Clear Filters</a></h5>
+    
+    </div>
+
+    <div ng-show="totalRecordsCount > 0">
+
+        <table id="dietPoints-uiresults" class="table table-striped table-hover ">
+            <thead>
+            <tr>
+                <th class="hidable-options-container">When <a class="option" id="filterWhen" ng-click="filterWhen()">Filter</a></th>
+                <th>Meal</th>
+                <th>Calories</th>
+                <th>Food Type</th>
+                <th>Diet Points</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr data-ng-repeat="entry in entries | limitTo:totalDisplayed">
+                <td>
+                    {{entry.date | date:'MM/dd/yyyy @ hh:mm a'}}
+                </td>
+                <td>{{entry.meal}}</td>
+                <td>{{entry.calories}}</td>
+                <td>{{entry.foodType.name}}</td>
+                <td>{{entry.dietPoints}}</td>
+                <td>
+
+                    <ul class="list-inline options">
+                        <li>
+                            <a ng-click="deleteEntry(entry)">Delete</a>
+                        </li>
+                        <li>
+                            <a ng-click="editEntry(entry)">Edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-primary" ng-click="loadMore()" ng-show="showLoadMore">Load more</button>
+    </div>
+
+    <div class="row text-center" data-ng-show="totalRecordsCount > 0">
+        <uib-pagination total-items="totalRecordsCount" ng-model="currentPage" ng-change="pageChanged()"></uib-pagination>
+    </div>
+
+    <div class="row text-center" data-ng-show="totalRecordsCount > 0">
+        <button ng-click="viewChart()" class="btn btn-primary">View Chart</button>
+    </div>
+
+</div>
+<div class="col-lg-5">
+    <div class="hidable-options-container alert alert-dismissible {{(dietPoints.todaysDietPoints < dietPoints.expectedDailyDietPoints) && 'alert-success' || 'alert-danger'}}" ng-show="dietPoints != null">
+        Today you've consumed {{dietPoints.todaysDietPoints}} diet points of {{dietPoints.expectedDailyDietPoints}}.
+        <a class="option" id="configure-expected-dietPoints-per-day" ng-click="configureExpectedDietPointsPerDay()">Configure</a>
+    </div>
+    <button ng-click="addNewEntry()" class="btn btn-primary btn-lg">Add new Entry</button>
+</div>

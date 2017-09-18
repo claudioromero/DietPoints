@@ -1,0 +1,44 @@
+﻿<form role="form" name="entryForm" id="entry-form" novalidate>
+    <div class="modal-header">
+        <a href="" class="close" data-ng-click="close()">&times;</a>
+        <h4 class="modal-title">
+            {{(entry.Id > 0) && 'Edit Entry' || 'Add Entry' }}
+        </h4>
+    </div>
+    <div class="modal-body">
+        <div ng-hide="errors.length == 0" class="alert alert-danger">
+            <strong>There were errors:</strong>
+            <ul ng-repeat="error in errors">
+                <li>{{error}}</li>
+            </ul>
+        </div>
+        <div class="form-group">
+            <input class="form-control" id="meal" name="meal" type="text" placeholder="What did you eat?" ng-model="entry.meal" 
+                   autocomplete="off" 
+                   uib-typeahead="item as item.meal for item in meals | filter:$viewValue | limitTo:10" 
+                   typeahead-editable="false" 
+                   typeahead-require-selection="true" 
+                   ng-blur="validateSelection()"
+                   typeahead-on-select="onSelect($item, $model, $label)" />
+        </div>
+        <div class="form-group">
+            <select class="form-control" name="foodType" type="number" ng-model="entry.foodType"
+                    ng-options="foodType.name for foodType in foodTypes track by foodType.id" >
+                <option value="">What kind of food?</option>
+             </select>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="calories" type="number" placeholder="How many calories were in it?" ng-model="entry.calories" />
+        </div>
+      
+        <div class="form-group">
+            <uib-datepicker ng-model="entry.date" show-weeks="true" class="date-picker"></uib-datepicker>
+            <uib-timepicker ng-model="entry.date" show-meridian="true" class="time-picker"></uib-timepicker>
+        </div>
+    </div>
+    <div class="modal-footer clear">
+        <button type="button" class="btn btn-default" data-ng-click="close()">Close</button>
+        <button type="submit" class="btn btn-primary" data-ng-click="save()">Save changes</button>
+    </div>
+
+</form>
